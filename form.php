@@ -412,6 +412,7 @@ class report_editdates_form extends moodleform {
         $first = reset($data);
         $last = end($data);
         $output = "";
+
         if (isset($first["time"]) && isset($last["time"])) {
             $first["time"] -= 86400; // Timeline view starts 1 day before first activity time.
             $last["time"] += 86400; // Timeline view ends 1 day after last activity time.
@@ -425,9 +426,20 @@ class report_editdates_form extends moodleform {
                 $output .= '<table><tr style="height: 65px;">';
                 for ($d = 0; $d <= $days; $d++) { // Create timeline vertical header.
                     $date = usergetdate($first["time"] + ($d * (60 * 60 * 24)));
-                    $output .= '<th class="vertical-text"><div><span>' .
-                                    $date['mon'] . '/' . $date['mday'] . '/' . $date['year'] .
-                                '</span></div></th>';
+                    switch ($config->dateformat) {
+                        case 'mm/dd/yyyy' :
+                            $datestring = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'];
+                            break;
+                        case 'dd/mm/yyyy' :
+                            $datestring = $date['mday'] . '/' . $date['mon'] . '/' . $date['year'];
+                            break;
+                        case 'yyyy/mm/dd' :
+                            $datestring = $date['year'] . '/' . $date['mon'] . '/' . $date['mday'];
+                            break;
+                        default :
+                            $datestring = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'];
+                    }
+                    $output .= '<th class="vertical-text"><div><span>' . $datestring . '</span></div></th>';
                 }
                 $output .= '</tr><tr>';
                 for ($d = 0; $d <= $days; $d++) {  // Check day by day for activity.

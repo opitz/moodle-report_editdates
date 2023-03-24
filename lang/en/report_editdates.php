@@ -24,7 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-
 $string['activityfilter'] = 'Activity view filter <small>(changing this filter will not save the remaining form data)</small>';
 $string['activitytypefilter'] = 'Activity type';
 $string['activitytypefilter_help'] = 'Use the filter to select activities to view and modify. Applying the filter will change the form display but will not save any existing changes.';
@@ -56,3 +55,8 @@ $string['addrestrictedaccess'] = 'Add restricted access (opens a new window)';
 $string['editrestrictedaccess'] = 'Edit restricted access (opens a new window)';
 $string['event:reportviewed'] = 'Edit dates report viewed';
 $string['privacy:metadata'] = 'The Dates plugin does not store any personal data.';
+$string['dateformat'] = 'Date format';
+$string['dateformatdesc'] = 'The date format used.';
+$string['Month-Day-Year'] = 'mm/dd/yyyy';
+$string['Day-Month-Year'] = 'dd/mm/yyyy';
+$string['Year-Month-Day'] = 'yyyy/mm/dd';

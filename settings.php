@@ -39,4 +39,16 @@ if ($ADMIN->fulltree) {
             get_string('timelinemaxdesc', 'report_editdates'),
             3,
             $options));
+
+    $foptions = [
+        'mm/dd/yyyy' => get_string('Month-Day-Year', 'report_editdates'),
+        'dd/mm/yyyy' => get_string('Day-Month-Year', 'report_editdates'),
+        'yyyy/mm/dd' => get_string('Year-Month-Day', 'report_editdates'),
+    ];
+    $settings->add(new admin_setting_configselect('report_editdates/dateformat',
+        get_string('dateformat', 'report_editdates'),
+        get_string('dateformatdesc', 'report_editdates'),
+        'mm/dd/yyyy',
+        $foptions));
+
 }
